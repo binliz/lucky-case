@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Link;
+use App\Lucky;
+use App\Observers\LinkObserver;
+use App\Observers\LuckyObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Link::observe(LinkObserver::class);
+        Lucky::observe(LuckyObserver::class);
     }
 }

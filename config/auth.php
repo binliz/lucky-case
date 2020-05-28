@@ -46,6 +46,18 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'members' => [
+            'driver' => 'session',
+            'provider'=> 'members'
+        ],
+
+        'apimembers' => [
+            'driver' => 'token',
+            'provider' => 'members',
+            'hash' => false,
+        ],
+
     ],
 
     /*
@@ -69,6 +81,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'members' => [
+            'driver' => 'eloquent',
+            'model' => App\Member::class,
         ],
 
         // 'users' => [
