@@ -14,12 +14,20 @@
                             </div>
                         @endif
 
-                        <table class="table table-striped">
-                            <tr>
-
-                            </tr>
-                        </table>
-                        {{$items->links()}}
+                        <p>{{$member->id}}</p>
+                            <p>{{$member->username}}</p>
+                            <p>{{$member->phone}}</p>
+                        <ul>
+                        @foreach($member->links as $link)
+                            <li>{{$link->url}}
+                            @if($link->global_valid == true)
+                                Valid
+                                @else
+                                NOT Valid
+                                @endif
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

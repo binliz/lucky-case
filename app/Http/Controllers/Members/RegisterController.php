@@ -20,11 +20,9 @@ class RegisterController extends Controller
         $member = new Member($request->only('username', 'phone'));
         $member->remember_token = \Str::random(60);
         $member->save();
-        $link = new Link;
-        $member->links()->save($link);
         $token = $member->createToken('member-api-token');
         Auth::guard('members')->loginUsingId($member->id);
-        return redirect()->route('lucky.link',$link);
+        return redirect()->route('lucky.link',$member->links()->first());
     }
     public function logout(){
         $this->middleware('auth:members');

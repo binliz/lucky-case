@@ -29,12 +29,17 @@
                                         <a class="btn btn-small btn-success"
                                            href="{{ Route('members.show' , $item->id) }}">Show</a>
                                         <a class="btn btn-small btn-info" href="{{ Route('members.edit',$item->id) }}">Edit</a>
-
+                                        <form action="{{ Route('members.destroy', $item->id) }}" method="post">
+                                            <input class="btn btn-danger" type="submit" value="Delete" />
+                                            @method('delete')
+                                            @csrf
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+                            <a href="{{ route('members.create') }}">Create</a>
                         {{$items->links()}}
                     </div>
                 </div>
